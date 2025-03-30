@@ -1,5 +1,16 @@
-import { projects } from "@/app/data/projects"; 
+import { projects } from "@/app/data/projects";
 import { notFound } from "next/navigation";
+
+// Import individual project contents
+import AutonomousNavigationContent from "./content/autonomous-navigation-ros2";
+import CraneInspectionRobotContent from "./content/crane-inspection-robot";
+import OptimizedAerospaceLayoutsContent from "./content/optimized-aerospace-layouts";
+
+const projectContentMap: { [key: string]: JSX.Element } = {
+  "autonomous-navigation-ros2": <AutonomousNavigationContent />,
+  "crane-inspection-robot": <CraneInspectionRobotContent />,
+  "optimized-aerospace-layouts": <OptimizedAerospaceLayoutsContent />,
+};
 
 export default function ProjectDetails({ params }: { params: { slug: string } }) {
   const project = projects.find((proj) => proj.slug === params.slug);
@@ -10,9 +21,7 @@ export default function ProjectDetails({ params }: { params: { slug: string } })
 
   return (
     <main className="container mx-auto px-4 py-10">
-      <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
-      <p className="text-lg">{project.detailedDescription}</p>
-      {/* Optionally include images, videos, or interactive CAD here */}
+      {projectContentMap[params.slug]}
     </main>
   );
 }
