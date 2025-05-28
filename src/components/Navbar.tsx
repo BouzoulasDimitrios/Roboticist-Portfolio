@@ -12,7 +12,6 @@ export default function Navbar() {
         <Link href="/">Home</Link>
         <Link href="/projects">Projects</Link>
         <Link href="/cad-models">CAD Models</Link>
-        <Link href="/about">About Me</Link>
         <Link href="/contact">Contact</Link>
       </ul>
     </nav>

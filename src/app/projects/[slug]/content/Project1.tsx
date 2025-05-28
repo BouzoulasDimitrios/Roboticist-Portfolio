@@ -1,4 +1,4 @@
-export default function AutonomousNavigationContent() {
+export default function Project1() {
     return (
       <article className="prose mx-auto">
         <h2>Autonomous Navigation for Cars (ROS 2)</h2>
@@ -18,6 +18,9 @@ export default function AutonomousNavigationContent() {
         </ul>
   
         <p>Further interactive demos and videos coming soon!</p>
+      
+      
+      
       </article>
     );
   }

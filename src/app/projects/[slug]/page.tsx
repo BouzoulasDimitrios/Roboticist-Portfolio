@@ -2,14 +2,14 @@ import { projects } from "@/app/data/projects";
 import { notFound } from "next/navigation";
 
 // Import individual project contents
-import AutonomousNavigationContent from "./content/autonomous-navigation-ros2";
-import CraneInspectionRobotContent from "./content/crane-inspection-robot";
-import OptimizedAerospaceLayoutsContent from "./content/optimized-aerospace-layouts";
+import Project1 from "./content/Project1";
+import Project2 from "./content/Project3";
+import Project3 from "./content/Project2";
 
 const projectContentMap: { [key: string]: JSX.Element } = {
-  "autonomous-navigation-ros2": <AutonomousNavigationContent />,
-  "crane-inspection-robot": <CraneInspectionRobotContent />,
-  "optimized-aerospace-layouts": <OptimizedAerospaceLayoutsContent />,
+  "Project1": <Project1 />,
+  "Project2": <Project2 />,
+  "Project3": <Project3 />,
 };
 
 export default function ProjectDetails({ params }: { params: { slug: string } }) {

@@ -7,24 +7,32 @@ export default function Homepage() {
     <div className="flex flex-col gap-12 pb-20">
         
       {/* Hero Section */}
-      <section className="project-card">
-        <h1 className="text-2xl font-semibold mb-2">Hi, I'm Dimitrios.</h1>
-        <h2 className="text-2xl font-semibold mb-2">
-          Robotics Engineer | Autonomous Systems & CAD Design
+      <section className="project-card flex flex-col md:flex-row items-center gap-6 p-6">
+      <img
+        src="/images/profile.png"
+        alt="Profile picture"
+        className="w-36 h-36 rounded-full object-cover shadow-md"
+      />
+      <div className="flex flex-col justify-center">
+        <h1 className="text-3xl font-semibold mb-2">Hi, I'm NAME.</h1>
+        <h2 className="text-xl font-semibold mb-2">
+          Robotics Engineering | Autonomous Systems | CAD Design
         </h2>
-        <p className="font-semibold mb-2">
+        <p className="font-medium">
           Welcome to my personal portfolio. Here you'll find my latest projects,
           interact with CAD models, and get insights into my engineering journey.
         </p>
-      </section>
+      </div>
+    </section>
+
         <h1>Recent Projects:</h1>
       {/* Highlighted Projects */}
       <section className="grid md:grid-cols-3 gap-8">
         {/* Project 1 */}
         <div className="project-card">
-          <h3 className="text-2xl font-semibold mb-2">Autonomous Navigation for Cars (ROS 2)</h3>
+          <h3 className="text-2xl font-semibold mb-2">Project name</h3>
           <p className="font-semibold mb-2">
-            Developed a robust 2D SLAM solution integrating camera, IMU, and GPS data for real-time autonomous navigation.
+            Short project description.
           </p>
           <Link href="/projects" className="text-indigo-600 hover:underline">
             Explore Project &rarr;
@@ -33,9 +41,9 @@ export default function Homepage() {
 
         {/* Project 2 */}
         <div className="project-card">
-          <h3 className="text-2xl font-semibold mb-2">Interactive 3D Crane Inspection Robot</h3>
+          <h3 className="text-2xl font-semibold mb-2">Project name</h3>
           <p className="text-semibold mb-2">
-            Designed and patented an overhead crane inspection device featuring automated defect detection.
+            Short project description.
           </p>
           <p className="text-indigo-600 hover">
             Yet to be published
@@ -44,9 +52,9 @@ export default function Homepage() {
 
         {/* Project 3 */}
         <div className="project-card">
-          <h3 className="text-2xl font-semibold mb-2">Optimized CAD Layouts for Aerospace</h3>
+          <h3 className="text-2xl font-semibold mb-2">Project name</h3>
           <p className="font-semibold mb-2">
-            Implemented AI-driven algorithms to optimize hangar layouts, enhancing workspace efficiency.
+            Short project description.
           </p>
           <Link href="/projects" className="text-indigo-600 hover:underline">
             Explore Project &rarr;
@@ -62,13 +70,119 @@ export default function Homepage() {
         <Link href="/cad-models" className="quick-link-btn">
           Interactive CAD Models
         </Link>
-        <Link href="/about" className="quick-link-btn">
-          About Me
-        </Link>
         <Link href="/contact" className="quick-link-btn">
           Contact
         </Link>
       </section>
+
+      <h1>Work Experience:</h1>
+
+      <section className="grid md:grid-cols-3 gap-8">
+        {/* Employment 1 */}
+        <div className="project-card">
+          <h3 className="text-2xl font-semibold mb-2">Employment</h3>
+          <p className="font-semibold mb-2">
+            Short description.
+          </p>
+        </div>
+
+        {/* Employment 2 */}
+        <div className="project-card">
+          <h3 className="text-2xl font-semibold mb-2">Employment</h3>
+          <p className="text-semibold mb-2">
+            Short description.
+          </p>
+        </div>
+
+        {/* Employment 3 */}
+        <div className="project-card">
+          <h3 className="text-2xl font-semibold mb-2">Employment</h3>
+          <p className="font-semibold mb-2">
+            Short description.
+          </p>
+        </div>
+      </section>
+
+      <section className="grid md:grid-cols-3 gap-8">
+        {/* Employment 1 */}
+        <div className="project-card">
+          <h3 className="text-2xl font-semibold mb-2">Employment</h3>
+          <p className="font-semibold mb-2">
+            Short description.
+          </p>
+        </div>
+
+        {/* Employment 2 */}
+        <div className="project-card">
+          <h3 className="text-2xl font-semibold mb-2">Employment</h3>
+          <p className="text-semibold mb-2">
+            Short description.
+          </p>
+        </div>
+
+        {/* Employment 3 */}
+        <div className="project-card">
+          <h3 className="text-2xl font-semibold mb-2">Employment </h3>
+          <p className="font-semibold mb-2">
+            Short description.
+          </p>
+        </div>
+      </section>
+
+      <h1>Competitions:</h1>
+        <section className="grid md:grid-cols-3 gap-8">
+          {/* Competition 1 */}
+          <div className="project-card">
+            <h3 className="text-2xl font-semibold mb-2">Competition</h3>
+            <p className="font-semibold mb-2">
+              Description, placement.
+            </p>
+          </div>
+
+          {/* Competition 2 */}
+          <div className="project-card">
+            <h3 className="text-2xl font-semibold mb-2">Competition</h3>
+            <p className="text-semibold mb-2">
+              Description, placement.
+            </p>
+          </div>
+
+          {/* Competition 3 */}
+          <div className="project-card">
+            <h3 className="text-2xl font-semibold mb-2">Competition</h3>
+            <p className="font-semibold mb-2">
+              Description, placement.
+            </p>
+          </div>
+        </section>
+
+      <h1>Patents:</h1>
+        <section className="grid md:grid-cols-3 gap-8">
+          {/* Patent 1 */}
+          <div className="project-card">
+            <h3 className="text-2xl font-semibold mb-2">Patent</h3>
+            <p className="font-semibold mb-2">
+              Description.
+            </p>
+          </div>
+
+          {/* Patent 2 */}
+          <div className="project-card">
+            <h3 className="text-2xl font-semibold mb-2">Patent</h3>
+            <p className="text-semibold mb-2">
+              Description.
+            </p>
+          </div>
+
+          {/* Patent 3 */}
+          <div className="project-card">
+            <h3 className="text-2xl font-semibold mb-2">Patent</h3>
+            <p className="font-semibold mb-2">
+              Description.
+            </p>
+          </div>
+        </section>
+
 
     </div>
   );
