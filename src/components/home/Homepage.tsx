@@ -10,21 +10,21 @@ const HERO_CAD_TARGET: [number, number, number] = [-3.64, -43.68, -42.44];
 
 const projectCards = [
   {
-    title: "Project name",
-    description: "Short project description.",
+    title: "Project 1",
+    description: "Give a short overview of your first featured build.",
     href: "/projects",
     linkLabel: "Explore Project →",
     image: CARD_PLACEHOLDER,
   },
   {
-    title: "Project name",
-    description: "Short project description.",
+    title: "Project 2",
+    description: "Share key highlights or impact for the second project.",
     note: "Yet to be published",
     image: CARD_PLACEHOLDER,
   },
   {
-    title: "Project name",
-    description: "Short project description.",
+    title: "Project 3",
+    description: "Describe another showcase-worthy effort or prototype.",
     href: "/projects",
     linkLabel: "Explore Project →",
     image: CARD_PLACEHOLDER,

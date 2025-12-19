@@ -7,27 +7,27 @@ export interface CADModel {
 
 export const cadModels: CADModel[] = [
   {
-    title: "Robotic Arm Assembly",
-    description: "6-DOF robotic arm designed for precision manipulation.",
-    grabCadUrl: "https://grabcad.com/library/robotic-arm-assembly",
-    modelPath: "/models/Duck2.glb",
-  },
-  {
-    title: "Autonomous Drone Frame",
-    description: "Optimized lightweight drone frame for autonomous navigation.",
-    grabCadUrl: "https://grabcad.com/library/autonomous-drone-frame",
+    title: "Model 1",
+    description: "Describe your primary CAD model or assembly here.",
+    grabCadUrl: "https://grabcad.com",
     modelPath: "/models/Duck.glb",
   },
   {
-    title: "Underwater Inspection Rover",
-    description: "Pressure-rated rover for hull inspections and sonar mapping.",
-    grabCadUrl: "https://grabcad.com/library/underwater-inspection-rover",
-    modelPath: "/models/Duck2.glb",
+    title: "Model 2",
+    description: "Add context for another concept, prototype, or mechanism.",
+    grabCadUrl: "https://grabcad.com",
+    modelPath: "/models/Duck.glb",
   },
   {
-    title: "Quadruped Research Platform",
-    description: "Four-legged robot concept with swappable sensor payloads.",
-    grabCadUrl: "https://grabcad.com/library/quadruped-research-platform",
+    title: "Model 3",
+    description: "Use this slot for a yet-to-be published or experimental CAD file.",
+    grabCadUrl: "https://grabcad.com",
+    modelPath: "/models/Duck.glb",
+  },
+  {
+    title: "Model 4",
+    description: "Showcase an additional mechanism, chassis, or tooling concept.",
+    grabCadUrl: "https://grabcad.com",
     modelPath: "/models/Duck.glb",
   },
   // Add more models here...
