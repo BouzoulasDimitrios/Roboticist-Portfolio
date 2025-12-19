@@ -82,8 +82,8 @@ export default function Homepage() {
 
       <h2 className="text-3xl font-bold tracking-tight text-white drop-shadow">Recent Projects</h2>
       <section className="grid md:grid-cols-3 gap-8">
-        {projectCards.map((project) => (
-          <div key={project.title} className="project-card flex flex-col gap-4">
+        {projectCards.map((project, index) => (
+          <div key={`${project.title}-${index}`} className="project-card flex flex-col gap-4">
             <Image
               src={project.image}
               alt={`${project.title} preview`}
