@@ -18,5 +18,17 @@ export const cadModels: CADModel[] = [
     grabCadUrl: "https://grabcad.com/library/autonomous-drone-frame",
     modelPath: "/models/Duck.glb",
   },
+  {
+    title: "Underwater Inspection Rover",
+    description: "Pressure-rated rover for hull inspections and sonar mapping.",
+    grabCadUrl: "https://grabcad.com/library/underwater-inspection-rover",
+    modelPath: "/models/Duck2.glb",
+  },
+  {
+    title: "Quadruped Research Platform",
+    description: "Four-legged robot concept with swappable sensor payloads.",
+    grabCadUrl: "https://grabcad.com/library/quadruped-research-platform",
+    modelPath: "/models/Duck.glb",
+  },
   // Add more models here...
 ];

@@ -2,8 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import CADViewer from "@/components/cad/CADViewer";
 
 const CARD_PLACEHOLDER = "/images/card-placeholder.svg";
+const HERO_CAD_CAMERA_POSITION: [number, number, number] = [-212.42, 124.12, -284.01];
+const HERO_CAD_TARGET: [number, number, number] = [-3.64, -43.68, -42.44];
 
 const projectCards = [
   {
@@ -53,7 +56,7 @@ export default function Homepage() {
   return (
     <div className="flex flex-col gap-12 pb-20">
       {/* Hero Section */}
-      <section className="project-card flex flex-col md:flex-row items-center gap-6 p-6">
+      <section className="project-card flex flex-col md:flex-row md:items-start gap-6 p-6">
         <Image
           src="/images/profile.png"
           alt="Profile picture"
@@ -61,7 +64,7 @@ export default function Homepage() {
           height={144}
           className="w-36 h-36 rounded-full object-cover shadow-md"
         />
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-center gap-4 w-full md:pr-36">
           <h1 className="text-3xl font-semibold mb-2">Hi, I'm NAME.</h1>
           <h2 className="text-xl font-semibold mb-2">
             Robotics Engineering | Autonomous Systems | CAD Design
@@ -70,10 +73,14 @@ export default function Homepage() {
             Welcome to my personal portfolio. Here you'll find my latest projects, interact with CAD models, and
             get insights into my engineering journey.
           </p>
+          <div>
+            <p className="font-semibold mb-3">Signature CAD build:</p>
+            <CADViewer modelPath="/models/tesla_2018_model_3.glb" cameraPosition={HERO_CAD_CAMERA_POSITION} target={HERO_CAD_TARGET} />
+          </div>
         </div>
       </section>
 
-      <h1>Recent Projects:</h1>
+      <h2 className="text-3xl font-bold tracking-tight text-white drop-shadow">Recent Projects</h2>
       <section className="grid md:grid-cols-3 gap-8">
         {projectCards.map((project) => (
           <div key={project.title} className="project-card flex flex-col gap-4">
@@ -110,7 +117,7 @@ export default function Homepage() {
         </Link>
       </section>
 
-      <h1>Work Experience:</h1>
+      <h2 className="text-3xl font-bold tracking-tight text-white drop-shadow">Work Experience</h2>
       <section className="grid md:grid-cols-3 gap-8">
         {workExperiences.map((experience, index) => (
           <div key={`${experience.title}-${index}`} className="project-card flex flex-col gap-4">
@@ -127,7 +134,7 @@ export default function Homepage() {
         ))}
       </section>
 
-      <h1>Competitions:</h1>
+      <h2 className="text-3xl font-bold tracking-tight text-white drop-shadow">Competitions</h2>
       <section className="grid md:grid-cols-3 gap-8">
         {competitionCards.map((competition, index) => (
           <div key={`${competition.title}-${index}`} className="project-card flex flex-col gap-4">
@@ -144,7 +151,7 @@ export default function Homepage() {
         ))}
       </section>
 
-      <h1>Patents:</h1>
+      <h2 className="text-3xl font-bold tracking-tight text-white drop-shadow">Patents</h2>
       <section className="grid md:grid-cols-3 gap-8">
         {patentCards.map((patent, index) => (
           <div key={`${patent.title}-${index}`} className="project-card flex flex-col gap-4">
