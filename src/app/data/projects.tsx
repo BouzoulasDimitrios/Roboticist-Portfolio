@@ -4,16 +4,20 @@ export interface Project {
   description: string;
   detailedDescription: string;
   imageUrl?: string;
+  externalUrl?: string;
   published: boolean;
 }
+
+const CARD_PLACEHOLDER = "/images/card-placeholder.svg";
 
 export const projects: Project[] = [
   {
     slug: "project-1",
     title: "Project 1",
-    description: "Use this slot to summarize the primary or flagship initiative.",
+    description: "Summarize your flagship project in one or two lines.",
     detailedDescription: "Provide an extended narrative, bullet points, media, or results for Project 1.",
-    imageUrl: "/images/projects/project_img.png",
+    imageUrl: CARD_PLACEHOLDER,
+    externalUrl: "https://github.com/username/project-1",
     published: true,
   },
   {
@@ -21,7 +25,8 @@ export const projects: Project[] = [
     title: "Project 2",
     description: "Outline another key effort—software, hardware, research, or competition entry.",
     detailedDescription: "Add context, methodology, and outcomes for Project 2.",
-    imageUrl: "/images/projects/crane-robot.png",
+    imageUrl: CARD_PLACEHOLDER,
+    externalUrl: "https://github.com/username/project-2",
     published: true,
   },
   {
@@ -29,8 +34,8 @@ export const projects: Project[] = [
     title: "Project 3",
     description: "Highlight a work-in-progress or exploratory concept.",
     detailedDescription: "Explain goals, progress, lessons learned, and any relevant media for Project 3.",
-    imageUrl: "/images/projects/aerospace-layout.png",
+    imageUrl: CARD_PLACEHOLDER,
+    externalUrl: "https://github.com/username/project-3",
     published: true,
   },
-
 ];

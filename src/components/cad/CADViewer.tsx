@@ -1,14 +1,25 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 
-function Model({ url }: { url: string }) {
+function Model({
+  url,
+  scale = 1,
+  onLoaded,
+}: {
+  url: string;
+  scale?: number;
+  onLoaded?: () => void;
+}) {
   const { scene } = useGLTF(url);
   const clonedScene = useMemo(() => scene.clone(), [scene]);
-  return <primitive object={clonedScene} scale={1} />;
+  useEffect(() => {
+    onLoaded?.();
+  }, [onLoaded, scene]);
+  return <primitive object={clonedScene} scale={scale} />;
 }
 
 type Vec3 = [number, number, number];
@@ -25,10 +36,14 @@ interface CameraState {
 function SceneContents({
   modelPath,
   target,
+  scale,
+  onModelLoaded,
   onCameraChange,
 }: {
   modelPath: string;
   target: Vec3;
+  scale?: number;
+  onModelLoaded?: () => void;
   onCameraChange?: (state: CameraState) => void;
 }) {
   const controlsRef = useRef<OrbitControlsImpl>(null);
@@ -73,7 +88,9 @@ function SceneContents({
     <>
       <ambientLight intensity={1.2} />
       <directionalLight position={[5, 5, 5]} intensity={2} />
-      <Model url={modelPath} />
+      <Suspense fallback={null}>
+        <Model url={modelPath} scale={scale} onLoaded={onModelLoaded} />
+      </Suspense>
       <OrbitControls ref={controlsRef} target={target} onChange={notifyCameraChange} />
     </>
   );
@@ -85,17 +102,20 @@ export default function CADViewer({
   modelPath,
   cameraPosition = DEFAULT_CAMERA_POSITION,
   target = DEFAULT_TARGET,
-  showCameraDebug = false,
+  scale = 1,
+  showCameraDebug = true,
 }: {
   modelPath: string;
   cameraPosition?: Vec3;
   target?: Vec3;
+  scale?: number;
   showCameraDebug?: boolean;
 }) {
   const [cameraState, setCameraState] = useState<CameraState>(() => ({
     position: cameraPosition,
     target,
   }));
+  const [isModelReady, setIsModelReady] = useState(false);
 
   useEffect(() => {
     if (!showCameraDebug) {
@@ -115,28 +135,34 @@ export default function CADViewer({
   const handleCameraChange = useCallback((state: CameraState) => {
     setCameraState(state);
   }, []);
+  const handleModelLoaded = useCallback(() => {
+    setIsModelReady(true);
+  }, []);
 
   return (
     <div className="w-full">
-      <div className="aspect-square max-h-[28rem] w-full border rounded shadow-md bg-gray-100">
+      <div className="relative aspect-square max-h-[28rem] w-full overflow-hidden rounded border bg-gray-100 shadow-md">
         <Canvas camera={{ position: cameraPosition }}>
           <SceneContents
             modelPath={modelPath}
             target={target}
+            scale={scale}
+            onModelLoaded={handleModelLoaded}
             onCameraChange={showCameraDebug ? handleCameraChange : undefined}
           />
         </Canvas>
+        {!isModelReady && (
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-gray-950/40 text-sm font-semibold text-gray-100">
+            Loading model...
+          </div>
+        )}
+        {showCameraDebug && (
+          <div className="absolute bottom-2 left-2 rounded border border-gray-800 bg-gray-950/70 px-2 py-1 text-[10px] font-mono text-gray-100 shadow">
+            <div>camera: {formatVec(cameraState.position)}</div>
+            <div>target: {formatVec(cameraState.target)}</div>
+          </div>
+        )}
       </div>
-      {showCameraDebug && (
-        <div className="mt-2 rounded border bg-white/80 p-3 text-[11px] font-mono text-gray-700">
-          <p>
-            <span className="font-semibold">cameraPosition</span> = {formatVec(cameraState.position)}
-          </p>
-          <p>
-            <span className="font-semibold">target</span> = {formatVec(cameraState.target)}
-          </p>
-        </div>
-      )}
     </div>
   );
 }

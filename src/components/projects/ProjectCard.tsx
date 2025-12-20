@@ -22,18 +22,23 @@ export default function ProjectCard({
         alt={`${project.title} preview`}
         width={800}
         height={450}
-        className="w-full h-48 object-cover rounded-md"
+        className="w-full h-64 md:h-72 object-contain rounded-md bg-gray-900/40"
       />
 
       <div>
         <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
         <p className="mb-4">{project.description}</p>
-        {project.published ? (
-          <Link href={`/projects/${project.slug}`} className="text-indigo-600 hover:underline font-semibold">
-            Explore Project &rarr;
-          </Link>
+        {project.externalUrl ? (
+          <a
+            href={project.externalUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="text-indigo-600 hover:underline font-semibold"
+          >
+            View Repository &rarr;
+          </a>
         ) : (
-          <p className="text-gray-500 italic">Yet to be published</p>
+          <p className="text-gray-500 italic">Repository link not available yet</p>
         )}
       </div>
     </article>

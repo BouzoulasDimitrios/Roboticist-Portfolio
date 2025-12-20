@@ -2,6 +2,8 @@ export interface CADModel {
   title: string;
   description: string;
   grabCadUrl: string;
+  cameraPosition?: [number, number, number];
+  target?: [number, number, number];
   modelPath: string; // Path to local .glb file
 }
 

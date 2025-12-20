@@ -1,20 +1,33 @@
 <div align="center">
 
-# Robotics Portfolio
+# Engineer Portfolio
 
 Interactive engineering portfolio built with Next.js 15, React 19, and Tailwind CSS.  
-Showcases robotics projects, work history, CAD models rendered with Three.js, and contact channels.
+Showcases projects, experience, CAD models rendered with Three.js, and contact channels.
+The published website functions as a template allowing anyone to pull the code, update the content, and publish it without needing additional development.
 
 </div>
+
+---
+# Demo gif:
+
+<p align="center">
+
+<img src="./readme_resources/website.gif" width = 90%> 
+
+</p>
+
+
+
 
 ---
 
 ## ✨ Features
 
-- **Hero overview** with profile photo, highlighted description, and interactive Tesla Model 3 CAD viewer powered by `@react-three/fiber`.
-- **Projects & CAD models** pages with sticky navigation sidebars for quick jumps to each card, plus preview imagery for every entry.
+- **Hero overview** with profile photo, highlighted description, and an interactive CAD viewer powered by `@react-three/fiber`.
+- **Projects & CAD models** pages with sticky navigation sidebars for quick jumps to each card, plus preview imagery.
 - **Reusable CAD viewer** that accepts custom camera positions/targets and (optionally) displays live orientation data for tuning.
-- **Work experience, competitions, and patents** sections styled consistently with card previews for rapid scanning.
+- **Experience, competitions, publications, education, and patents** sections styled consistently with card previews for rapid scanning.
 - **Contact page** mirroring the hero card aesthetic, including structured links to major platforms (LinkedIn, GitHub, GrabCAD, Google Scholar, YouTube, etc.).
 - **Sticky top navigation bar** that remains accessible while scrolling through long content.
 
@@ -77,13 +90,52 @@ CAD assets live under `public/models/*.glb`, while preview imagery sits in `publ
 
 ---
 
+## 🛠 Updating Content
+
+Use the files below to personalize the template. No additional backend or CMS is required.
+
+### Homepage
+
+- **Hero text + profile image + featured CAD viewer:** `src/components/home/Homepage.tsx`
+  - Replace the headline and bio text.
+  - Swap the profile image path (`PROFILE_IMAGE`) with your own image in `public/images/`.
+  - Update the hero CAD viewer by changing `modelPath`, `cameraPosition`, `target`, or `scale`.
+- **Homepage sections (projects, experience, competitions, publications, education, patents):**
+  - Each section is a mapped array in `src/components/home/Homepage.tsx`.
+  - Add/remove cards by editing the arrays and keeping the `<h2>` + `<section>` pair intact.
+
+### Projects Page
+
+- **Project list content:** `src/app/data/projects.tsx`
+  - Update `title`, `description`, `externalUrl`, and `imageUrl`.
+  - Slugs must match the route: `/projects/<slug>`.
+- **Project detail pages:** `src/app/projects/[slug]/content/*.tsx`
+  - Replace placeholder content with full write‑ups, images, and links.
+
+### CAD Models Page
+
+- **CAD model cards + camera settings:** `src/app/data/cadModels.ts`
+  - Update `title`, `description`, `modelPath`, and optional `cameraPosition`, `target`, `scale`.
+  - `.glb` files live in `public/models/`.
+- **Viewer behavior:** `src/components/cad/CADViewer.tsx`
+  - Adjust overlay styling, loading text, and camera debug defaults.
+
+### Contact Page
+
+- **Contact details:** `src/app/contact/page.tsx`
+  - Edit `contactDetails` with your email, handles, and profiles.
+  - Replace the placeholder avatar with an image (optional).
+
+### Styling
+
+- **Global styles:** `src/app/globals.css`
+  - `project-card` and `quick-link-btn` classes control the card and CTA styling.
+
 ## 🛠 Customization Tips
 
 - **Projects/CAD entries:** Edit the arrays in `src/app/data/projects.tsx` and `src/app/data/cadModels.ts` to add real content, publish flags, and `.glb` paths.
-- **Hero CAD orientation:** Adjust `HERO_CAD_CAMERA_POSITION` and `HERO_CAD_TARGET` in `src/components/home/Homepage.tsx`. Enable `showCameraDebug` on `CADViewer` temporarily to record preferred values.
-- **Contact info:** Update `contactDetails` in `src/app/contact/page.tsx` with your actual email, handles, and locations.
-- **Homepage sections:** Each chunk (Projects, Work Experience, Competitions, Patents) is a simple mapping over arrays near the top of `src/components/home/Homepage.tsx`. Remove a section by deleting its `<h2>` and `<section>` pair, or add new cards by pushing entries into the corresponding arrays. Wrap new sections in `project-card` containers for consistent styling.
-- **Styling tweaks:** Tailwind utility classes live in components; global helpers and `project-card` rules are in `src/app/globals.css`.
+- **Hero CAD orientation:** Adjust `HERO_CAD_CAMERA_POSITION` and `HERO_CAD_TARGET` in `src/components/home/Homepage.tsx`. Use the in‑viewer camera readout to capture ideal values.
+- **Homepage sections:** Each chunk is a simple mapping over arrays near the top of `src/components/home/Homepage.tsx`.
 
 ---
 
@@ -108,10 +160,9 @@ While this repository is primarily a personal portfolio, feel free to open issue
 
 ## Resources
 
-Tesla model .glb file: [link](https://sketchfab.com/3d-models/tesla-2018-model-3-5ef9b845aaf44203b6d04e2c677e444f)
+Sample `.glb` files can be placed in `public/models/` and referenced in `src/app/data/cadModels.ts`.
 
 ---
 
 Happy building! 🚀
-
 
