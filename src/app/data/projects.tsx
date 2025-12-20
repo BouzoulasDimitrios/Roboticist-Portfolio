@@ -9,11 +9,11 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: "project-1",
-    title: "Project 1",
+    slug: "pong",
+    title: "Qlearning Pong in SFML & C++",
     description: "Use this slot to summarize the primary or flagship initiative.",
     detailedDescription: "Provide an extended narrative, bullet points, media, or results for Project 1.",
-    imageUrl: "/images/projects/project_img.png",
+    imageUrl: "/images/pong/pong.gif",
     published: true,
   },
   {
