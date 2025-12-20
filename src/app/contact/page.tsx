@@ -1,17 +1,17 @@
 import Image from "next/image";
 
 const contactDetails = [
-  { label: "Email", value: "name@example.com", href: "mailto:name@example.com" },
-  { label: "Location", value: "Dublin, Ireland" },
-  { label: "LinkedIn", value: "linkedin.com/in/username", href: "https://linkedin.com/in/username" },
-  { label: "GitHub", value: "github.com/username", href: "https://github.com/username" },
-  { label: "GrabCAD", value: "grabcad.com/username", href: "https://grabcad.com/username" },
+  { label: "Email", value: "dimitrios.bouzoulas@gmail.com", href: "mailto:dimitrios.bouzoulas@gmail.com" },
+  { label: "Location", value: "Helsinki, Finland" },
+  { label: "LinkedIn", value: "linkedin.com/in/dimitrios-bouzoulas", href: "https://www.linkedin.com/in/dimitrios-bouzoulas-204664182/" },
+  { label: "GitHub", value: "github.com/BouzoulasDimitrios", href: "https://github.com/BouzoulasDimitrios" },
+  { label: "GrabCAD", value: "grabcad.com/dimitrios.bouzoulas", href: "https://grabcad.com/dimitrios.bouzoulas-2" },
   {
     label: "Google Scholar",
-    value: "scholar.google.com/citations?user=XXXXX",
-    href: "https://scholar.google.com/citations?user=XXXXX",
+    value: "scholar.google.com/bouzoulasdimitrios",
+    href: "https://scholar.google.com/citations?user=RYevT2AAAAAJ&hl=el&authuser=1",
   },
-  { label: "YouTube", value: "youtube.com/@username", href: "https://youtube.com/@username" },
+  { label: "YouTube", value: "youtube.com/@DimitriosBouzoulas", href: "https://www.youtube.com/@DimitriosBouzoulas" },
 ];
 
 export default function Contact() {
@@ -19,7 +19,7 @@ export default function Contact() {
     <main className="container mx-auto px-4 py-10">
       <section className="project-card flex flex-col gap-6 p-6 md:flex-row md:items-start">
         <Image
-          src="/images/profile.png"
+          src="/images/profile/profile.jpeg"
           alt="Profile picture"
           width={144}
           height={144}
