@@ -21,6 +21,14 @@ const defense_hackathon = "/images/defense_hackathon/cdefense.jpeg";
 const ocid = "/images/ocid/ocid.png";
 const bfmc = "/images/bfmc/bfmc.jpg";
 const profile = "/images/profile/profile.jpeg";
+
+//education
+const bachelor_degree_image = "/images/bachelors_graduation/graduation_cropped.jpeg";
+const cpp_summer = "/images/cpp_summer/cpp_summer.jpeg";
+const oxford = "/images/oxford/oxford.jpeg";
+const msc = "/images/msc/msc_cropped.jpeg";
+
+
 //for projects not published yet simply remove the hyperlink and linklabel and add a note field
 /**
 remove:
@@ -164,17 +172,63 @@ const competitionCards = [
 
 const publications = [
   { title: "Automatic Labelling for Low-Light Pedestrian Detection", 
-    description: <> <br/> 
+    description: <>Using IR-RGB image pairs a pipeline was developed that is 
+    capable of producing labels for the RGB images that outperform ground 
+    truth labels in low-light pedestriand detection tasks in most cases 
     </>, 
     image: thesis_architecture_image },
-  { title: "On the Real-Time Compliance of Moving-Horizon Simultaneous Input-and-State Estimation Problems", 
-    description: <> <br/> 
+  
+    { title: "On the Real-Time Compliance of Moving-Horizon Simultaneous Input-and-State Estimation Problems", 
+    description: <>  This paper evaluates whether moving-horizon simultaneous input-and-state estimation (MH-SISE) 
+    can meet strict real-time constraints for fast 
+    dynamical systems by using solver code generation instead of conventional numerical optimization. 
     </>, 
     image: KTH },
+
   { title: "Overhead Crane Inspection Device", 
-    description: <> <br/> 
+    description: <> This study presents a portable overhead-crane inspection device that combines a robotic arm, web-based camera streaming, 
+    and a machine-learning audio pre-screening method to improve safety and reduce inspection time. 
+    In trials, it successfully inspected 14 of 20 target components without requiring a manlift, 
+    with future work proposed around OPC UA–based automation and expanding the dataset to strengthen ML performance.
     </>, 
     image: ocid },
+];
+
+
+const education = [
+
+  { title: "MSc: Mechanical Engineering - Aalto University", 
+    description: <>GPA: 4.82/5<br/>
+    Acomplishments: Dean's List 2024 & 2025<br/>
+    Minor: Computer Science<br/>
+    Primary focus during the degree was autonomous mobile robotics. Involving a range of tasks, such as perception, state estimation, control, and system integration. <br/>  
+    </>, 
+    image: msc },
+
+
+  { title: "Summer School: Machine Learning on Representation Learning and Generative AI - Oxford University", 
+    description: <>Organized by: AI for Global Goals <br/>
+    The summer school covered a range of topics regarding generative AI and representation learning application in a diverse set of fields. <br/> 
+    </>, 
+    image: oxford },
+
+
+  { title: "Summer School: Software design using C++ from the inventor of C++ - Aarhus University", 
+    description: <> The summer school went through a diverse range of topics regarding modern C++ software design and best practices taught by Bjarne Stroustrup, the inventor of C++. <br/> 
+    </>, 
+    image: cpp_summer },
+
+
+  { title: "BSc in Mechanical Engineering - University of Peloponnese", 
+    description: <>GPA: 7.8/10 <br/> 
+    Acomplishments: Highest GPA in my graduation class (Valedictorian equivelent) <br/>
+    Main focus: Embedded systems, Electronics, 3D printing applications, CAD design, and material strength testing. <br/>
+    </>, 
+    image: bachelor_degree_image },
+  // { title: "Overhead Crane Inspection Device", 
+  //   description: <> <br/> 
+  //   </>, 
+  //   image: ocid },
 ];
 
 
@@ -296,17 +350,36 @@ export default function Homepage() {
       >link</a>):
       </h2>
       <section className="grid md:grid-cols-3 gap-8">
-        {publications.map((competition, index) => (
-          <div key={`${competition.title}-${index}`} className="project-card flex flex-col gap-4">
+        {publications.map((publication, index) => (
+          <div key={`${publication.title}-${index}`} className="project-card flex flex-col gap-4">
             <Image
-              src={competition.image}
-              alt={`${competition.title} preview`}
+              src={publication.image}
+              alt={`${publication.title} preview`}
               width={400}
               height={240}
               className="w-full h-40 md:h-48 object-contain rounded-md bg-gray-900/40"
             />
-            <h3 className="text-2xl font-semibold">{competition.title}</h3>
-            <p className="font-semibold">{competition.description}</p>
+            <h3 className="text-2xl font-semibold">{publication.title}</h3>
+            <p className="font-semibold">{publication.description}</p>
+          </div>
+        ))}
+      </section>
+
+
+      <h2 className="text-3xl font-bold tracking-tight text-white drop-shadow">Education:
+      </h2>
+      <section className="grid md:grid-cols-3 gap-8">
+        {education.map((educationItem, index) => (
+          <div key={`${educationItem.title}-${index}`} className="project-card flex flex-col gap-4">
+            <Image
+              src={educationItem.image}
+              alt={`${educationItem.title} preview`}
+              width={400}
+              height={240}
+              className="w-full h-40 md:h-48 object-contain rounded-md bg-gray-900/40"
+            />
+            <h3 className="text-2xl font-semibold">{educationItem.title}</h3>
+            <p className="font-semibold">{educationItem.description}</p>
           </div>
         ))}
       </section>
