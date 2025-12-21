@@ -29,7 +29,7 @@ export default function Contact() {
         <div className="flex-1">
           <h1 className="text-3xl font-semibold mb-4">Get in touch</h1>
           <p className="mb-4 text-gray-200">
-            Reach out for opportunities, collaborations, or questions about my work.
+            Reach out for opportunities, collaborations, consulting, or questions about my work.
           </p>
 
           <dl className="space-y-4">

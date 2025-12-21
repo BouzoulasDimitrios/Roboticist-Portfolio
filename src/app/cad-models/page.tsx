@@ -39,10 +39,13 @@ export default function CADModelsPage() {
       <div className="flex-1 flex justify-center">
         <div className="w-full max-w-4xl flex flex-col gap-10">
           <div>
-            <h1 className="text-4xl font-bold mb-6">CAD Models</h1>
-            <p className="text-gray-600">
-              Interact with sample assemblies, scan each mechanism, and jump straight to their GrabCAD resources.
-            </p>
+            <h1 className="text-4xl font-bold mb-6 text-white">CAD Models</h1>
+            <p className="text-gray-200">
+              Interact with sample assemblies or jump straight to their GrabCAD resources, for more visit my {" "}
+              <a href="https://grabcad.com/dimitrios.bouzoulas-2" className="text-blue-500 hover:underline">
+                GrabCAD
+              </a> profile.
+              </p>
           </div>
           {modelWithIds.map(({ model, id }) => (
             <CADModelCard key={id} model={model} cardId={id} />

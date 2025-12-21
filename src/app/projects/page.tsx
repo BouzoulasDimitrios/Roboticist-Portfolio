@@ -25,8 +25,8 @@ export default function ProjectsPage() {
       <div className="flex-1 flex justify-center">
         <div className="w-full max-w-4xl flex flex-col gap-10">
           <div>
-            <h1 className="text-4xl font-bold mb-6">My Projects</h1>
-            <p className="text-gray-600">
+            <h1 className="text-4xl font-bold mb-6 text-white">My Projects</h1>
+            <p className="text-gray-200">
               Explore featured engineering efforts. For more projects and project details, visit my{" "} 
               <a href="https://github.com/BouzoulasDimitrios" className="text-blue-500 hover:underline">
                 GitHub

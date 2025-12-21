@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import CADViewer from "@/components/cad/CADViewer";
 
-const HERO_CAD_CAMERA_POSITION: [number, number, number] = [-212.42, 124.12, -284.01];
-const HERO_CAD_TARGET: [number, number, number] = [-3.64, -43.68, -42.44];
+const HERO_CAD_CAMERA_POSITION: [number, number, number] = [0.16, 0.20, 0.30];
+const HERO_CAD_TARGET: [number, number, number] = [0.09, 0.18, 0.09];
 
 // image files
 const CARD_PLACEHOLDER = "/images/card-placeholder.svg";
@@ -261,11 +261,17 @@ export default function Homepage() {
           </h2>
           <p className="font-medium">
             Welcome to my personal portfolio. Here you'll find my latest projects, interact with CAD models, and
-            get insights into my engineering journey.
+            get insights into my engineering journey. <br/>
+            Shortly about me: I'm a PhD researcher at Aalto University focusing on autonomous vehicle perception in adverse weather conditions.
+            My primary interests lie in robotics, more specifically how they perceive the world and how can they make decisions based on that information.<br/>
+
+            Current work: <br/>
+            Work: Currently I am actively working on applying an automated labelling pipeline for low-light pedestrian detection on a research vehicle. <br/>
+            Personal projects: I am making a turtlebot robot from scrach, I aim to publish it as a cheapepr alternative to existing solutions, and additionally use it for my robotics related experiments. 
           </p>
           <div>
             <p className="font-semibold mb-3">Signature CAD build:</p>
-            <CADViewer modelPath="/models/tesla_2018_model_3.glb" cameraPosition={HERO_CAD_CAMERA_POSITION} target={HERO_CAD_TARGET} />
+            <CADViewer modelPath="/models/sample_robotic_arm.glb" cameraPosition={HERO_CAD_CAMERA_POSITION} target={HERO_CAD_TARGET} />
           </div>
         </div>
       </section>

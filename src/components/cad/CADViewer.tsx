@@ -5,10 +5,10 @@ import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 
-function Model({ url }: { url: string }) {
+function Model({ url, scale = 1 }: { url: string; scale?: number }) {
   const { scene } = useGLTF(url);
   const clonedScene = useMemo(() => scene.clone(), [scene]);
-  return <primitive object={clonedScene} scale={1} />;
+  return <primitive object={clonedScene} scale={scale} />;
 }
 
 type Vec3 = [number, number, number];
@@ -25,10 +25,12 @@ interface CameraState {
 function SceneContents({
   modelPath,
   target,
+  scale,
   onCameraChange,
 }: {
   modelPath: string;
   target: Vec3;
+  scale?: number;
   onCameraChange?: (state: CameraState) => void;
 }) {
   const controlsRef = useRef<OrbitControlsImpl>(null);
@@ -73,7 +75,7 @@ function SceneContents({
     <>
       <ambientLight intensity={1.2} />
       <directionalLight position={[5, 5, 5]} intensity={2} />
-      <Model url={modelPath} />
+      <Model url={modelPath} scale={scale} />
       <OrbitControls ref={controlsRef} target={target} onChange={notifyCameraChange} />
     </>
   );
@@ -85,11 +87,13 @@ export default function CADViewer({
   modelPath,
   cameraPosition = DEFAULT_CAMERA_POSITION,
   target = DEFAULT_TARGET,
+  scale = 1,
   showCameraDebug = true,
 }: {
   modelPath: string;
   cameraPosition?: Vec3;
   target?: Vec3;
+  scale?: number;
   showCameraDebug?: boolean;
 }) {
   const [cameraState, setCameraState] = useState<CameraState>(() => ({
@@ -123,6 +127,7 @@ export default function CADViewer({
           <SceneContents
             modelPath={modelPath}
             target={target}
+            scale={scale}
             onCameraChange={showCameraDebug ? handleCameraChange : undefined}
           />
         </Canvas>

@@ -1,6 +1,6 @@
 <div align="center">
 
-# Robotics Portfolio
+# Portfolio
 
 Interactive engineering portfolio built with Next.js 15, React 19, and Tailwind CSS.  
 Showcases robotics projects, work history, CAD models rendered with Three.js, and contact channels.
