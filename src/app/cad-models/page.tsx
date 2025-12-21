@@ -8,11 +8,16 @@ const slugify = (value: string) =>
     .replace(/^-+|-+$/g, "");
 
 export default function CADModelsPage() {
+  const slugCounts = new Map<string, number>();
   const modelWithIds = cadModels.map((model, index) => {
-    const slug = slugify(model.title);
+    const baseSlug = slugify(model.title);
+    const fallbackSlug = `cad-model-${index + 1}`;
+    const slug = baseSlug.length > 0 ? baseSlug : fallbackSlug;
+    const nextCount = (slugCounts.get(slug) ?? 0) + 1;
+    slugCounts.set(slug, nextCount);
     return {
       model,
-      id: slug.length > 0 ? slug : `cad-model-${index + 1}`,
+      id: nextCount > 1 ? `${slug}-${nextCount}` : slug,
     };
   });
 

@@ -15,10 +15,8 @@ export default function CADModelCard({
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  const cameraPosition = model.cameraPosition
-    ? [model.cameraPosition.x, model.cameraPosition.y, model.cameraPosition.z]
-    : undefined;
-  const target = model.target ? [model.target.x, model.target.y, model.target.z] : undefined;
+  const cameraPosition = model.cameraPosition;
+  const target = model.target;
   const scale = model.scale;
 
   useEffect(() => {

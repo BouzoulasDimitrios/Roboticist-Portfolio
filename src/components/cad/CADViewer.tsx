@@ -1,13 +1,24 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 
-function Model({ url, scale = 1 }: { url: string; scale?: number }) {
+function Model({
+  url,
+  scale = 1,
+  onLoaded,
+}: {
+  url: string;
+  scale?: number;
+  onLoaded?: () => void;
+}) {
   const { scene } = useGLTF(url);
   const clonedScene = useMemo(() => scene.clone(), [scene]);
+  useEffect(() => {
+    onLoaded?.();
+  }, [onLoaded, scene]);
   return <primitive object={clonedScene} scale={scale} />;
 }
 
@@ -26,11 +37,13 @@ function SceneContents({
   modelPath,
   target,
   scale,
+  onModelLoaded,
   onCameraChange,
 }: {
   modelPath: string;
   target: Vec3;
   scale?: number;
+  onModelLoaded?: () => void;
   onCameraChange?: (state: CameraState) => void;
 }) {
   const controlsRef = useRef<OrbitControlsImpl>(null);
@@ -75,7 +88,9 @@ function SceneContents({
     <>
       <ambientLight intensity={1.2} />
       <directionalLight position={[5, 5, 5]} intensity={2} />
-      <Model url={modelPath} scale={scale} />
+      <Suspense fallback={null}>
+        <Model url={modelPath} scale={scale} onLoaded={onModelLoaded} />
+      </Suspense>
       <OrbitControls ref={controlsRef} target={target} onChange={notifyCameraChange} />
     </>
   );
@@ -100,6 +115,7 @@ export default function CADViewer({
     position: cameraPosition,
     target,
   }));
+  const [isModelReady, setIsModelReady] = useState(false);
 
   useEffect(() => {
     if (!showCameraDebug) {
@@ -119,6 +135,9 @@ export default function CADViewer({
   const handleCameraChange = useCallback((state: CameraState) => {
     setCameraState(state);
   }, []);
+  const handleModelLoaded = useCallback(() => {
+    setIsModelReady(true);
+  }, []);
 
   return (
     <div className="w-full">
@@ -128,9 +147,15 @@ export default function CADViewer({
             modelPath={modelPath}
             target={target}
             scale={scale}
+            onModelLoaded={handleModelLoaded}
             onCameraChange={showCameraDebug ? handleCameraChange : undefined}
           />
         </Canvas>
+        {!isModelReady && (
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-gray-950/40 text-sm font-semibold text-gray-100">
+            Loading model...
+          </div>
+        )}
         {showCameraDebug && (
           <div className="absolute bottom-2 left-2 rounded border border-gray-800 bg-gray-950/70 px-2 py-1 text-[10px] font-mono text-gray-100 shadow">
             <div>camera: {formatVec(cameraState.position)}</div>
