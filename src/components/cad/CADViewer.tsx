@@ -85,7 +85,7 @@ export default function CADViewer({
   modelPath,
   cameraPosition = DEFAULT_CAMERA_POSITION,
   target = DEFAULT_TARGET,
-  showCameraDebug = false,
+  showCameraDebug = true,
 }: {
   modelPath: string;
   cameraPosition?: Vec3;
@@ -118,7 +118,7 @@ export default function CADViewer({
 
   return (
     <div className="w-full">
-      <div className="aspect-square max-h-[28rem] w-full border rounded shadow-md bg-gray-100">
+      <div className="relative aspect-square max-h-[28rem] w-full overflow-hidden rounded border bg-gray-100 shadow-md">
         <Canvas camera={{ position: cameraPosition }}>
           <SceneContents
             modelPath={modelPath}
@@ -126,17 +126,13 @@ export default function CADViewer({
             onCameraChange={showCameraDebug ? handleCameraChange : undefined}
           />
         </Canvas>
+        {showCameraDebug && (
+          <div className="absolute bottom-2 left-2 rounded border border-gray-800 bg-gray-950/70 px-2 py-1 text-[10px] font-mono text-gray-100 shadow">
+            <div>camera: {formatVec(cameraState.position)}</div>
+            <div>target: {formatVec(cameraState.target)}</div>
+          </div>
+        )}
       </div>
-      {showCameraDebug && (
-        <div className="mt-2 rounded border bg-white/80 p-3 text-[11px] font-mono text-gray-700">
-          <p>
-            <span className="font-semibold">cameraPosition</span> = {formatVec(cameraState.position)}
-          </p>
-          <p>
-            <span className="font-semibold">target</span> = {formatVec(cameraState.target)}
-          </p>
-        </div>
-      )}
     </div>
   );
 }
